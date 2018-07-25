@@ -5,7 +5,8 @@ describe 'As a registered guest' do
     # As a guest user (no sign in required)
     visit '/'
     # And I fill in a text box with "mindfulness"
-    fill_in 'Submit', with: 'mindfulness'
+    fill_in 'text', with: 'mindfulness'
+    click_on 'Submit'
     # And I click "Submit"
     expect(page).to have_content('mindfulness')
     # Then I should see a message that says "Examples for using 'mindfulness'"
