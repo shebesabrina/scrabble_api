@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
   def index
+
+    # Refactor to service
     conn = Faraday.new('https://od-api.oxforddictionaries.com:443/api/v1/')
     response = conn.get('entries/en/mindfulness/sentences') do |req|
       # req.url 'https://od-api.oxforddictionaries.com/api/v1/'
@@ -7,6 +9,8 @@ class WelcomeController < ApplicationController
       req.headers['app_key'] = ENV['app_key']
     end
      response_data = JSON.parse(response.body)
+
+     #Refactor to decorator
       region =  response_data['results'].first["lexicalEntries"].first["sentences"].first["regions"] #this gives me N.America
       @word = response_data['results'].first['id']
       sentance =  response_data['results'].first["lexicalEntries"].first["sentences"].first["text"] #this gives me the first sentence

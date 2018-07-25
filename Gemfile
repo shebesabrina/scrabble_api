@@ -34,3 +34,12 @@ gem "pry", "~> 0.11.3"
 
 # Added at 2018-07-25 09:02:08 -0600 by sabrinarobinson:
 gem "faraday", "~> 0.15.2"
+
+# Added at 2018-07-25 09:38:23 -0600 by sabrinarobinson:
+gem "figaro", "~> 1.1"
+
+# Added at 2018-07-25 11:57:39 -0600 by sabrinarobinson:
+gem "launchy", "~> 2.4"
+
+# Added at 2018-07-25 12:10:56 -0600 by sabrinarobinson:
+gem "webmock", "~> 3.4"
