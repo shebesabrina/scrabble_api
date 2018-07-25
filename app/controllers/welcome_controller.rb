@@ -7,8 +7,14 @@ class WelcomeController < ApplicationController
       req.headers['app_key'] = ENV['app_key']
     end
      response_data = JSON.parse(response.body)
-      response_data['results'].first["lexicalEntries"].first["sentences"].first["regions"] #this gives me N.America
-      response_data['results'].first["lexicalEntries"].first["sentences"].first["text"] #this gives me the first sentence
-      #I need a list of sentances. Iterate?
+      region =  response_data['results'].first["lexicalEntries"].first["sentences"].first["regions"] #this gives me N.America
+      @word = response_data['results'].first['id']
+      @sentances =  response_data['results'].first["lexicalEntries"].first["sentences"].first["text"] #this gives me the first sentence
+      if response.status == 404
+        flash[:error] = "This is not a valid word"
+        redirect_to root_path
+      else
+        flash[:success] = "Examples for using '#{@word}'"
+      end
   end
 end
