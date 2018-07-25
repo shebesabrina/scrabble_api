@@ -12,9 +12,9 @@ describe 'As a registered guest' do
     expect(page).to have_content('mindfulness')
     # Then I should see a message that says "Examples for using 'mindfulness'"
     expect(page).to have_content("Examples for using 'mindfulness")
-    expect(page).tp have_content("If you think mindfulness involves labeling what comes up and doing everything in a very deliberate fashion, you will suffer enormously because the world is not under your control.")
+    expect(page).to have_content("'mindfulness'\nWord:\nNorth American Long practice at meditation or mindfulness can also dispel the illusion.")
     # And I should see a list of sentences with examples of how to use the word
-    expect(page).to have_content(["North American"] )
+    expect(page).to have_content("North American")
     # And I should see only sentences for usage in North America
     # And I should not see sentences for any other regions
     expect(page).to_not have_content("Canadian")
