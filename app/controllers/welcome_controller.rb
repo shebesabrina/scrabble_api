@@ -10,6 +10,12 @@ class WelcomeController < ApplicationController
       region =  response_data['results'].first["lexicalEntries"].first["sentences"].first["regions"] #this gives me N.America
       @word = response_data['results'].first['id']
       @sentances =  response_data['results'].first["lexicalEntries"].first["sentences"].first["text"] #this gives me the first sentence
+
+      data = response_data['results'].first["lexicalEntries"].first["sentences"]
+      data.find_all do |region|
+        binding.pry
+        { 'regions' => ["North American"] }
+      end
       if response.status == 404
         flash[:error] = "This is not a valid word"
         redirect_to root_path
