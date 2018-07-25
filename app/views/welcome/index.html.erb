@@ -3,3 +3,7 @@
   <%= text_field_tag(:text) %>
   <%= submit_tag 'Submit'%>
 <% end %>
+
+<% if flash[:success] %>
+  <%= @sentance %>
+<% end %>

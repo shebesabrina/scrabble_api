@@ -8,19 +8,23 @@ class WelcomeController < ApplicationController
     end
      response_data = JSON.parse(response.body)
       region =  response_data['results'].first["lexicalEntries"].first["sentences"].first["regions"] #this gives me N.America
-      @word = response_data['results'].first['id']
-      @sentances =  response_data['results'].first["lexicalEntries"].first["sentences"].first["text"] #this gives me the first sentence
+      word = response_data['results'].first['id']
+      sentance =  response_data['results'].first["lexicalEntries"].first["sentences"].first["text"] #this gives me the first sentence
 
       data = response_data['results'].first["lexicalEntries"].first["sentences"]
-      data.find_all do |region|
-        binding.pry
-        { 'regions' => ["North American"] }
+
+      results = data.find_all do |data|
+        if data['regions'] == ["North American"]
+          @region = data['regions']
+          @sentance = data['text']
+        end
       end
+
       if response.status == 404
         flash[:error] = "This is not a valid word"
         redirect_to root_path
       else
-        flash[:success] = "Examples for using '#{@word}'"
+        flash[:success] = "Examples for using '#{@word}. Here's an example: #{@region} #{@sentance}"
       end
   end
 end
